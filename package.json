@@ -1,0 +1,25 @@
+{
+  "name": "lru-cache-map",
+  "version": "1.0.0",
+  "description": "Least Recently Used Cache.",
+  "author": {
+    "name": "Jason Wang",
+    "email": "quarkchaos@outlook.com"
+  },
+  "repository": "https://github.com/quarkchaos/lru-cache-map",
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "lru-cache-map",
+    "lru",
+    "cache"
+  ],
+  "devDependencies": {
+    "mocha": "^2.2.1"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test/test.js"
+  }
+}
