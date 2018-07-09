@@ -28,7 +28,7 @@ describe('LruCache', function () {
 
     assert.equal(cache.get('k2'), undefined);
     assert.equal(cache.get('k1'), 'v1n');
-    
+
     // support object key
     var key = {foo: 'bar'};
     cache.set(key, 'v');
@@ -43,7 +43,7 @@ describe('LruCache', function () {
     assert.equal(cache.has('k1'), true);
     assert.equal(cache.has('k2'), true);
     assert.equal(cache.has('k3'), false);
-    
+
     // support object key
     var key = {foo: 'bar'};
     cache.set(key, 'v');
@@ -114,5 +114,17 @@ describe('LruCache', function () {
       assert.equal(nodes[i].key, 'k' + (i + 1));
       assert.equal(nodes[i].value, 'v' + (i + 1));
     }
+  });
+
+  it('should evict entries in order', function () {
+    var cache = new LruCache(2);
+    cache.set('k1', 'v1');
+    cache.set('k2', 'v2');
+    cache.get('k1');
+    cache.set('k3', 'v3');
+    assert.equal(cache.get('k1'), 'v1');
+    assert.equal(cache.get('k2'), undefined);
+    assert.equal(cache.get('k3'), 'v3');
+    assert.equal(cache.size(), 2);
   });
 });
